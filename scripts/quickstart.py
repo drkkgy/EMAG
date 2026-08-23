@@ -10,8 +10,14 @@ Requires a GPU and access to the SD3-medium weights on Hugging Face
 The EMAG defaults below match the values used in the paper's experiments.
 """
 import argparse
+import os
+import sys
 
 import torch
+
+# Allow running directly as `python scripts/quickstart.py` (no install / PYTHONPATH needed):
+# put the repo root (parent of scripts/) on sys.path so the top-level `emag` package imports.
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from emag import StableDiffusion3Pipeline
 

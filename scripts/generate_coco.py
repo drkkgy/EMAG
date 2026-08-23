@@ -19,9 +19,13 @@ Example:
 import argparse
 import json
 import os
+import sys
 from pathlib import Path
 
 import torch
+
+# Allow running directly as `python scripts/generate_coco.py` (no install / PYTHONPATH needed).
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from emag import StableDiffusion3Pipeline
 

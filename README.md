@@ -51,9 +51,14 @@ naturally composes with advanced orthogonal guidance techniques such as **APG** 
 ```bash
 git clone https://github.com/drkkgy/EMAG.git
 cd EMAG
-pip install -r requirements.txt        # or: pip install -e .
+pip install -r requirements.txt        # dependencies
+pip install -e .                       # install the `emag` package (recommended)
 huggingface-cli login                  # SD3-Medium weights are gated on Hugging Face
 ```
+
+`pip install -e .` makes the `emag` package importable everywhere, so the scripts run from any
+directory. Without it, run scripts from the repo root with `PYTHONPATH=.`, e.g.
+`PYTHONPATH=. python scripts/quickstart.py ...`.
 
 ## Quickstart
 
