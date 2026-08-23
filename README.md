@@ -60,6 +60,11 @@ huggingface-cli login                  # SD3-Medium weights are gated on Hugging
 directory. Without it, run scripts from the repo root with `PYTHONPATH=.`, e.g.
 `PYTHONPATH=. python scripts/quickstart.py ...`.
 
+> **Tested environment:** Python 3.10, **torch 2.3.1**, **diffusers 0.31.0**, transformers 4.4x
+> (CUDA 11.8 / 12.x). The SD3 pipeline was written against the diffusers 0.31.0 API — newer or
+> older diffusers can rename/move imports (e.g. `SD3IPAdapterMixin`, `SD3LoraLoaderMixin`) and may
+> break the pipeline. If you hit an `ImportError` from `diffusers`, run `pip install diffusers==0.31.0`.
+
 ## Quickstart
 
 **Stable Diffusion 3 Medium (text-to-image):**
@@ -189,20 +194,15 @@ tests/          unit tests for the SD3 (incl. EMAG-Q) and DiT EMAG attention cor
 
 ## Roadmap / TODO
 
-- [ ] **Trim layer selection to the paper's method.** The paper uses *only* the attention-gradient
-  rule (Δ = MAE(E, A), Eq. 11–12). Remove the auxiliary entropy-based and hybrid selection code
-  paths and the extra `emag_adaptive_mode` options (entropy / hybrid) from the package, CLI, and
-  docs — keep attention-gradient as the single default.
 - [x] EMAG-Q variant (query-EMA + fused SDPA) — default in `scripts/quickstart.py`.
 - [x] Table 2 (EMAG rows) reproduce: `scripts/generate_coco.py` + `eval/fid.py` + `eval/hps.py` +
   `scripts/reproduce_table2.sh`.
-- [ ] Extend the harness with Precision/Recall/Density/Coverage + CLIPScore, and DiT (Table 3) repro.
-- [ ] Baseline wrappers (CFG, APG, CADS, PAG, SAG, SEG, ERG, S²) behind a uniform interface, for the
-  full comparison table.
 - [ ] **Hugging Face integration:** package the SD3 EMAG pipeline as a 🤗 diffusers *community
   pipeline* so it loads via `DiffusionPipeline.from_pretrained(..., custom_pipeline="emag")`, and
   publish a model card / demo on the Hub.
-- [ ] Cleanup pass: strip leftover `DEBUG:` prints and dead `combo_mode` branches.
+- [ ] Add `TESTING.md` documenting the GPU validation sequence (unit tests → quickstart → DiT → eval
+  → full Table 2).
+- [ ] README: pin exact tested versions / add a conda `environment.yml`.
 
 ## Citation
 
