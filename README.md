@@ -200,8 +200,6 @@ tests/          unit tests for the SD3 (incl. EMAG-Q) and DiT EMAG attention cor
 - [ ] **Hugging Face integration:** package the SD3 EMAG pipeline as a 🤗 diffusers *community
   pipeline* so it loads via `DiffusionPipeline.from_pretrained(..., custom_pipeline="emag")`, and
   publish a model card / demo on the Hub.
-- [ ] Add `TESTING.md` documenting the GPU validation sequence (unit tests → quickstart → DiT → eval
-  → full Table 2).
 - [ ] README: pin exact tested versions / add a conda `environment.yml`.
 
 ## Citation
