@@ -1,0 +1,35 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "emag"
+version = "0.1.0"
+description = "Official implementation of 'EMAG: Self-Rectifying Diffusion Sampling with Exponential Moving Average Guidance' (ECCV 2026)"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+authors = [
+  { name = "Ankit Yadav" },
+  { name = "Ta Duc Huy" },
+  { name = "Lingqiao Liu" },
+]
+keywords = ["diffusion models", "guidance", "training-free", "stable diffusion 3", "DiT", "attention"]
+dependencies = [
+  "torch==2.3.1",
+  "diffusers==0.31.0",
+  "transformers>=4.40.0",
+  "accelerate>=0.30.0",
+  "safetensors>=0.4.0",
+  "sentencepiece>=0.1.99",
+  "protobuf<5",
+  "Pillow",
+  "numpy",
+]
+
+[project.urls]
+Paper = "https://arxiv.org/abs/2512.17303"
+Repository = "https://github.com/drkkgy/EMAG"
+
+[tool.hatch.build.targets.wheel]
+packages = ["emag"]

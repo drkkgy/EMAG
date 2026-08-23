@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# Model weights / checkpoints
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+
+# Generated samples / outputs / logs
+outputs/
+samples/
+results/
+*.png
+*.jpg
+*.npz
+*.log
+submitit_logs/
+
+# Keep documentation / teaser assets even though they are images
+!assets/**
+!docs/**
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
