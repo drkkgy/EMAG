@@ -19,8 +19,6 @@ import torch
 from torch import nn as nn
 from torch.nn import functional as F
 import os
-import numpy as np
-import matplotlib.pyplot as plt
 import math
 
 from ._fx import register_notrace_function

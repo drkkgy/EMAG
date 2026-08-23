@@ -18,7 +18,7 @@ keywords = ["diffusion models", "guidance", "training-free", "stable diffusion 3
 dependencies = [
   "torch==2.3.1",
   "diffusers==0.31.0",
-  "transformers>=4.40.0",
+  "transformers>=4.41.0,<4.49",
   "accelerate>=0.30.0",
   "safetensors>=0.4.0",
   "sentencepiece>=0.1.99",
