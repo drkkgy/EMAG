@@ -40,7 +40,14 @@ from transformers import (
 
 from diffusers.callbacks import MultiPipelineCallbacks, PipelineCallback
 from diffusers.image_processor import PipelineImageInput, VaeImageProcessor
-from diffusers.loaders import FromSingleFileMixin, SD3IPAdapterMixin, SD3LoraLoaderMixin
+from diffusers.loaders import FromSingleFileMixin, SD3LoraLoaderMixin
+try:
+    from diffusers.loaders import SD3IPAdapterMixin
+except ImportError:
+    # Older diffusers (<0.31) lack SD3 IP-Adapter support; EMAG does not use IP-Adapter,
+    # so fall back to a no-op mixin to keep the pipeline importable on more versions.
+    class SD3IPAdapterMixin:  # type: ignore
+        pass
 from diffusers.models.autoencoders import AutoencoderKL
 from diffusers.models.transformers import SD3Transformer2DModel
 from diffusers.schedulers import FlowMatchEulerDiscreteScheduler
